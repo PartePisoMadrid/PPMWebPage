@@ -1,0 +1,25 @@
+body * {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center;
+  border: 3px solid green;
+}
+
+#cutlery {
+    width: 30%;
+}
+
+#buttons * {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+#buttons2 {
+    border: 3px solid green;
+    width: 20%;
+    margin: 10px;
+    display: inline;
+}

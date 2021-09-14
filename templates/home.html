@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>PPM TOOLS</h1>
+	<img id="cutlery" src="https://www.educima.com/imagen-plato-y-cubiertos-dm5413.jpg" alt="plate and cutlery" width="300" height="300">
+	<div id="buttons">
+		<button type="button" onclick="location.href = '/create'">EXECUTE PARTE ROUTINE</button>
+		<p>When you press this bottom the Parte routine will be activated. This routine consists on:</p>
+
+		<ol>
+			<li>Download the sheet "Resumen Parte"</li>
+			<li>If it's monday, create the next Parte and store link in Firebase to be updated in the Wix page</li>
+			<li>If it's thursday, redirect you to a form where you can write the sharing message for send the next week Parte to Piso colleagues </li>	
+		</ol>
+		
+    	<button type="button" onclick="location.href = '/parte/1'">VIEW PAST PARTES</button>
+    	<button type="button" onclick="location.href = '/about'">ABOUT</button>
+	</div>
+	<p>Enjoy these tools!</p>
+{% endblock %}

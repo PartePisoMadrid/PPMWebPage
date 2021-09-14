@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="margin:30px;">
+    <h1>{% if object.title %}{{ object.title }}{% else %}No Partes{% endif %}</h1>
+	<p>{% if object.shareMessage %}{{ object.shareMessage }}{% else %}There are no more Partes to show{% endif %}</p>
+    <div id="buttons2">
+        {% if object %}
+        {% if object.id is not 1 %}
+	    <a class="btn btn-primary" href='/parte/{{object.id|add:"-1"}}' style="display:inline-block;">Previous</a>
+	    {% endif %}
+	    <a id="butt" class="btn btn-primary" href='/parte/{{object.id|add:"1"}}' style="display:inline-block; margin-left:20px">Next</a>
+	    {% endif %}
+	</div>
+</div>
+{% endblock %}
