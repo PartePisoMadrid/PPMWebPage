@@ -1,5 +1,3 @@
-import numpy as np
-import pandas as pd
 import os
 from gsheets import Sheets
 from pathlib import Path

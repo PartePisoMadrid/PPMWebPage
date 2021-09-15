@@ -14,7 +14,6 @@ from .FileConvert import gsheet2csv, csv2excel
 
 from openpyxl import load_workbook
 
-import pandas as pd
 import datetime
 import os
 
@@ -66,13 +65,13 @@ def printParte(urlFilePath):
     fileToRead.close()
 
     # download Parte google sheet to a csv
-    parteCsv = gsheet2csv(CREDENTIALS_PATH, parteUrl, 5, 'Parte_files/resumen.csv') 
+    parteCsv = gsheet2csv(CREDENTIALS_PATH, parteUrl, 5, 'Parte_files/resumen.csv')
     # convert csv downloaded to excel
-    parteDf = csv2excel("Parte_files/resumen.csv", 'Parte_files/resumen_data.xlsx', 'Sheet1') 
+    parteDf = csv2excel("Parte_files/resumen.csv", 'Parte_files/resumen_data.xlsx', 'Sheet1')
     # store date
     weekDay = parteDf.columns[2]
 
-    # load workbook 
+    # load workbook
     wb_to_write = load_workbook('Parte_files/RESUMEN_PARTE.XLSX')
     # get sheets of the woorkbooks
     sheet_to_read = load_workbook('Parte_files/resumen_data.xlsx')['Sheet1']
@@ -81,12 +80,12 @@ def printParte(urlFilePath):
     # update content of RESUMEN_PARTE.xlsx
     for row_read in range(2,23):
         row_write = row_read
-        
+
         if row_write>12:
             row_write+=2
         if row_write>21:
             row_write+=1
-        
+
         for col in range(3,8):
             if type(sheet_to_write.cell(row_write,col)).__name__ == 'MergedCell':
                 continue
@@ -100,15 +99,15 @@ def printParte(urlFilePath):
                     value = "                   " + value
                 sheet_to_write.cell(row_write,col).value = value
             print('row: '+str(row_read)+' col: '+str(col)+' value: '+str(sheet_to_read.cell(row_read,col).value))
-    
+
     # save the changes in other xlsx file
     sheet_to_write.cell(1,3).value = weekDay
     wb_to_write.save("Parte_files/RESUMEN_IMPRIMIBLE.xlsx")
-    
+
     # convert excel to pdf
     os.system("soffice --headless --convert-to pdf Parte_files/RESUMEN_IMPRIMIBLE.xlsx")
     # move to Parte_files folder
-    os.rename("RESUMEN_IMPRIMIBLE.pdf", "Parte_files/RESUMEN_IMPRIMIBLE.pdf") 
+    os.rename("RESUMEN_IMPRIMIBLE.pdf", "Parte_files/RESUMEN_IMPRIMIBLE.pdf")
     # print pdf
     #os.system("lp Parte_files/RESUMEN_IMPRIMIBLE.pdf")
 
@@ -187,6 +186,6 @@ def main():
     if reviseWeekDay==0:
         # create next week Parte
         createNextParte()
-    
+
     if reviseWeekDay==3:
     	shareParte()
