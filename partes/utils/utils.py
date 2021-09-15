@@ -21,7 +21,7 @@ import os
 # if modifying these scopes, delete the file token.json
 SCOPES = ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/contacts.readonly']
 # change these paths as appropriate
-CREDENTIALS_PATH = '/home/ebotiab/Desktop/parte/credentials/'
+CREDENTIALS_PATH = '/home/partepm/'
 CONTACTS_PATH = '/home/ebotiab/Desktop/parte/mycontacts.txt'
 URL_FILE_PATH = "Parte_files/url_parte.txt"
 SHMESS_FILE_PATH = "Parte_files/sharing_parte_message.txt"
