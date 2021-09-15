@@ -6,9 +6,7 @@ class ParteForm(forms.ModelForm):
 	class Meta:
 		model = Parte
 		fields = [
-			'title',
-			'shareMessage',
-			'shared'
+			'shareMessage'
 		]
 
 	def clean_title(self, *args, **kwargs):
@@ -21,3 +19,9 @@ class ParteForm(forms.ModelForm):
 # 		if not any(month == title[10:] for month in monthsList):
 # 			raise forms.ValidationError('The title must contain a month')
 		return title
+
+	def clean_shareMessage(self, *args, **kwargs):
+		shareMessage = self.cleaned_data.get('shareMessage')
+		if len(shareMessage)>5000:
+ 			raise forms.ValidationError('The shareMessage must have less than 5000 characters"')
+		return shareMessage

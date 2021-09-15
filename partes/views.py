@@ -14,9 +14,9 @@ def parte_create_view(request, *args, **kwargs):
 	reviseWeekDay = datetime.datetime.today().weekday()
 	if reviseWeekDay==0:
 		utils.createNextParte()
-	if reviseWeekDay==3:
+	if reviseWeekDay==2:
 		initial_data = {
-			'title': 'Semana (dd) de (mes)'
+			'title': 'Semana (dd) de (mes)', 'shared':False
 		}
 		form = ParteForm(None, initial=initial_data)
 		if request.POST:
